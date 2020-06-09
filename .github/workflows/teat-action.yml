@@ -17,6 +17,10 @@ jobs:
           args: install
       - name: PHPUnit testing
         uses: docker://php:7.2
-        with:
-          extensions: gd
-          args: php vendor/bin/phpunit
+        run: |
+          docker-php-ext-install -j$(nproc) iconv intl xml soap opcache pdo pdo_mysql mysqli mbstring
+          docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+          php vendor/bin/phpunit
+        # with:
+        #   extensions: gd
+        #   args: php vendor/bin/phpunit
