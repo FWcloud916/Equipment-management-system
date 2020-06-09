@@ -19,6 +19,6 @@ jobs:
         uses: docker://php:7.2
         with:
           args: |
-            docker-php-ext-install -j$(nproc) iconv intl xml soap opcache pdo pdo_mysql mysqli mbstring
+            docker-php-ext-install mcrypt pdo_mysql zip
             docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
             php vendor/bin/phpunit
