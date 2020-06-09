@@ -4,6 +4,7 @@ name: Test
 
 on:
   push:
+    branches: [ feature/test-action ]
 
 jobs:
   test:
